@@ -27,10 +27,10 @@ router.post('/createuser',[
 
         // await is use here because it is promises means user take some time to find a user email
         // is present or not in model.
-        let user = await User.findOne({success, email:req.body.email});
+        let user = await User.findOne({email:req.body.email});
         console.log(user)
         if(user){
-            return res.status(400).json({error : "Sorry a user with this email already exist"})
+            return res.status(400).json({success, error : "Sorry a user with this email already exist"})
         } 
 
         // we are using bcrypt to secure password
